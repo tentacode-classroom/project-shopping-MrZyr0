@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <title>{% block title %}Welcome!{% endblock %}</title>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        {# <link rel="stylesheet" href="{{ asset('/css/custom_style.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}"> #}
+    </head>
+    <body>
+        {% block header %}
+            <header>
+                {{ include('layout/menu.html.twig')}}
+            </header>
+        {% endblock %}
+        <main role="main">
+
+        {% block body %}
+        {% endblock %}
+
+        {% block footer %}
+            <hr class="featurette-divider">
+            <footer class="container">
+                <p class="float-right"><a href="#">Retourner en haut</a></p>
+                <p>© 2018 Julien SEIXAS</p>
+            </footer>
+        {% endblock %}
+        </main>
+    </body>
+</html>

@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block body %}
+    <h1>Produit {{ productNumber }}</h1>
+    <h2>Nos articles :</h2>
+    <nav>
+        {% for product in productObject %}
+            <li>
+                <a href="{{ 'http//localhost:8000/product/' ~ product.id }}">{{ product.name | upper }}</a>
+            </li>
+        {% endfor %}
+    </nav>
+
+{% endblock %}
