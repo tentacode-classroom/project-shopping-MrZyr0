@@ -3,14 +3,6 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block body %}
-    <h1>Produit {{ productNumber }}</h1>
-    <h2>Nos articles :</h2>
-    <nav>
-        {% for product in productObject %}
-            <li>
-                <a href="{{ 'http//localhost:8000/product/' ~ product.id }}">{{ product.name | upper }}</a>
-            </li>
-        {% endfor %}
-    </nav>
+    <h1>Produit n° {{ productNumber }}</h1>
 
 {% endblock %}
