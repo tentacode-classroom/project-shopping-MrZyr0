@@ -1,5 +1,7 @@
 <?php
 
+// TODO: Créer une commande pour initialiser le projet
+
 namespace App\Command;
 
 use Symfony\Component\Console\Command\Command;

@@ -1,5 +1,7 @@
 <?php
 
+// TODO: Faire une commande pour Reset la BDD
+
 namespace App\Command;
 
 use Symfony\Component\Console\Command\Command;
@@ -9,7 +11,7 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
-class ResetCommand extends Command
+class ResetDBCommand extends Command
 {
     protected static $defaultName = 'reset';
 
