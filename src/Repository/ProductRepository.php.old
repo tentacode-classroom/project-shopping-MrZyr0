@@ -2,29 +2,29 @@
 
 namespace App\Repository;
 
-use App\Entity\Products;
+use App\Entity\Product;
 
-class ProductsRepository
+class ProductRepository
 {
     private $DBproducts;
 
     public function __construct()
     {
-        $product1 = new Products();
+        $product1 = new Product();
         $product1->setId(1);
         $product1->setName('Création de site Web');
         $product1->setType('Service');
         $product1->setDescription('Nous créons enssemble votre site Web');
         $product1->setPrice(50);
 
-        $product2 = new Products();
+        $product2 = new Product();
         $product2->setId(2);
         $product2->setName('Administration Parc Réseau');
         $product2->setType('Service');
         $product2->setDescription('Je veille au bon fonctionnement du réseau de votre entreprise');
         $product2->setPrice(50);
 
-        $product3 = new Products();
+        $product3 = new Product();
         $product3->setId(3);
         $product3->setName('Cours');
         $product3->setType('Service');

@@ -6,11 +6,12 @@
 {% block body %}
     {% block aricles %}
         <div class="row">
-            {% for product in productObject %}
+            {% for product in productsObjects %}
                 <div class="col-lg-4">
                     <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
                     <h2>{{ product.name | upper }}</h2>
-                    <p></p>
+                    <p>{{ product.rate }}</p>
+                    <p>{{ product.description }}</p>
                     <p><a class="btn btn-secondary" href="{{ path('product', { 'productNumber': product.id }) }}" role="button">View details &raquo;</a></p>
                 </div><!-- /.col-lg-4 -->
             {% endfor %}

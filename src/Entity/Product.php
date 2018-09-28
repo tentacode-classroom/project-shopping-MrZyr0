@@ -5,9 +5,9 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\ProductsRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\ProductRepository")
  */
-class Products
+class Product
 {
     /**
      * @ORM\Id()
@@ -35,6 +35,16 @@ class Products
      * @ORM\Column(type="float")
      */
     private $price;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $rate;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $viewCounter;
 
     public function getId(): ?int
     {
@@ -87,5 +97,34 @@ class Products
         $this->price = $price;
 
         return $this;
+    }
+
+    public function getRate(): ?int
+    {
+        return $this->rate;
+    }
+
+    public function setRate(?int $rate): self
+    {
+        $this->rate = $rate;
+
+        return $this;
+    }
+
+    public function getViewCounter(): ?int
+    {
+        return $this->viewCounter;
+    }
+
+    public function setViewCounter(int $viewCounter): self
+    {
+        $this->viewCounter = $viewCounter;
+
+        return $this;
+    }
+
+    public function incrementViewCounter()
+    {
+        $this->viewCounter++;
     }
 }

@@ -3,6 +3,6 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block body %}
-    <h1>Produit n° {{ productNumber }}</h1>
-
+    <h1>Produit n° {{ product.getId() }}</h1>
+    <p>{{ product.getViewCounter() }}</p>
 {% endblock %}
