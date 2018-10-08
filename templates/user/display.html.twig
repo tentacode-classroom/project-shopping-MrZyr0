@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+
+{% block body %}
+    {% block aricles %}
+        <h1>Liste des Utilisateurs</h1>
+        <div class="container" style="display: flex!important;justify-content: space-evenly;">
+            {% for user in users %}
+                <div class="card" style="width: 18rem; margin: 15px;">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">ID : {{ user.id }}</li>
+                        <li class="list-group-item">{{ user.firstName ~ " " ~ user.lastName | upper}}</li>
+                        <li class="list-group-item">Email : {{ user.email }}</li>
+                        <li class="list-group-item">MDP : {{ user.password }}</li>
+                    </ul>
+                </div>
+            {% endfor %}
+        </div>
+    {% endblock %}
+{% endblock %}

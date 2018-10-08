@@ -15,18 +15,18 @@
                 {{ include('layout/menu.html.twig')}}
             </header>
         {% endblock %}
-        <main role="main">
+        <main role="main" class="container">
 
-        {% block body %}
-        {% endblock %}
+            {% block body %}
+            {% endblock %}
 
-        {% block footer %}
-            <hr class="featurette-divider">
-            <footer class="container">
-                <p class="float-right"><a href="#">Retourner en haut</a></p>
-                <p>© 2018 Julien SEIXAS</p>
-            </footer>
-        {% endblock %}
+            {% block footer %}
+                <hr class="featurette-divider">
+                <footer class="container">
+                    <p class="float-right"><a href="#">Retourner en haut</a></p>
+                    <p>© 2018 Julien SEIXAS</p>
+                </footer>
+            {% endblock %}
         </main>
     </body>
 </html>
