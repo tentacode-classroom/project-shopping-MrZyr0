@@ -1,0 +1,14 @@
+main
+{
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.nav__logo
+{
+    width: 40px;
+    height: auto;
+
+    border-radius: 50%;
+}

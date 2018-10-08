@@ -22,7 +22,8 @@ class Product
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="products")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $type;
 
@@ -32,12 +33,7 @@ class Product
     private $description;
 
     /**
-     * @ORM\Column(type="float")
-     */
-    private $price;
-
-    /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="decimal", precision=10, scale=2)
      */
     private $rate;
 
@@ -45,6 +41,11 @@ class Product
      * @ORM\Column(type="integer")
      */
     private $viewCounter;
+
+    /**
+     * @ORM\Column(type="decimal", precision=10, scale=2)
+     */
+    private $price;
 
     public function getId(): ?int
     {
@@ -63,12 +64,12 @@ class Product
         return $this;
     }
 
-    public function getType(): ?string
+    public function getType(): ?Category
     {
         return $this->type;
     }
 
-    public function setType(string $type): self
+    public function setType(?Category $type): self
     {
         $this->type = $type;
 
@@ -87,24 +88,12 @@ class Product
         return $this;
     }
 
-    public function getPrice(): ?float
-    {
-        return $this->price;
-    }
-
-    public function setPrice(float $price): self
-    {
-        $this->price = $price;
-
-        return $this;
-    }
-
-    public function getRate(): ?int
+    public function getRate()
     {
         return $this->rate;
     }
 
-    public function setRate(?int $rate): self
+    public function setRate($rate): self
     {
         $this->rate = $rate;
 
@@ -119,6 +108,18 @@ class Product
     public function setViewCounter(int $viewCounter): self
     {
         $this->viewCounter = $viewCounter;
+
+        return $this;
+    }
+
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    public function setPrice($price): self
+    {
+        $this->price = $price;
 
         return $this;
     }
