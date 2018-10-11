@@ -4,11 +4,12 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
-class User
+class User implements UserInterface, \Serializable
 {
     /**
      * @ORM\Id()
@@ -46,6 +47,7 @@ class User
      */
     private $password;
 
+    // TODO: Changer la Regex pour compter le nb de caractères de chaques types
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(
@@ -75,6 +77,11 @@ class User
      * )
     */
     private $lastName;
+
+    /**
+     * @ORM\Column(type="simple_array")
+     */
+    private $roles = ['ROLE_USER'];
 
 
     public function getId(): ?int
@@ -129,4 +136,56 @@ class User
 
         return $this;
     }
+    public function getUsername()
+   {
+       return $this->email;
+   }
+
+   public function getSalt()
+   {
+       // you *may* need a real salt depending on your encoder
+       // see section on salt below
+       return null;
+   }
+
+   public function setRoles(array $roles): self
+   {
+       $this->roles = $roles;
+
+       return $this;
+   }
+
+   public function getRoles()
+   {
+       return $this->roles;
+   }
+
+   public function eraseCredentials()
+   {
+   }
+
+   /** @see \Serializable::serialize() */
+   public function serialize()
+   {
+       return serialize(array(
+           $this->id,
+           $this->email,
+           $this->password,
+           // see section on salt below
+           // $this->salt,
+       ));
+   }
+
+   /** @see \Serializable::unserialize() */
+   public function unserialize($serialized)
+   {
+       list (
+           $this->id,
+           $this->email,
+           $this->password,
+           // see section on salt below
+           // $this->salt
+       ) = unserialize($serialized, array('allowed_classes' => false));
+   }
+
 }

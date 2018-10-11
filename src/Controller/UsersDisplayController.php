@@ -20,7 +20,7 @@ class UsersDisplayController extends AbstractController
 
         return $this->render('user/display.html.twig', [
             'title' => 'Liste des Utilisateurs',
-            'users' => $users
+            'users' => $users,
         ]);
     }
 }

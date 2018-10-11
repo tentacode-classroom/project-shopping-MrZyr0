@@ -5,6 +5,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use App\Entity\User;
 use App\Form\RegistrationType;
 
@@ -13,9 +14,8 @@ class UserRegistrationController extends AbstractController
     /**
      * @Route("/inscription", name="user_registration")
      */
-    public function index(Request $request)
+    public function index(Request $request, UserPasswordEncoderInterface $encoder)
     {
-
         $user = new User();
 
         $form = $this->createForm(RegistrationType::class, $user);
@@ -26,6 +26,10 @@ class UserRegistrationController extends AbstractController
         {
             $user = $form->getData();
 
+            $plainPassword = $user->getPassword();
+            $encryptedPassword = $encoder->encodePassword($user, $plainPassword);
+            $user->setPassword($encryptedPassword);
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
@@ -34,6 +38,7 @@ class UserRegistrationController extends AbstractController
         }
 
         return $this->render('user/registration.html.twig', [
+            'title' => 'Inscription',
             'form' => $form->createView(),
         ]);
     }
@@ -43,6 +48,8 @@ class UserRegistrationController extends AbstractController
     */
     public function confirmation()
     {
-        return $this->render('user/registration_success.html.twig');
+        return $this->render('user/registration_success.html.twig', [
+            'title' => 'Inscription',
+        ]);
     }
 }
