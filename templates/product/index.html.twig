@@ -3,5 +3,15 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block body %}
+    <p>{{ product.name }}</p>
+    <p>
+        {% for type in product.type %}
+            {{ type }}
+        {% endfor %}
+    </p>
+    <p>{{ product.description }}</p>
+    <p>{{ product.rate }}</p>
+    <p>{{ product.price }}</p>
     <p>{{ product.getViewCounter() }}</p>
+    <a href="{{ path('basket-add', { 'productId': product.id }) }}">Ajouter au Panier</a>
 {% endblock %}
